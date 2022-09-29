@@ -4,6 +4,8 @@ const url = "https://acnhapi.com/v1/villagers/";
 
 const villagerContainer = document.querySelector(".villager-container");
 const gallery = document.querySelector(".gallery");
+const leftBtn = document.querySelector(".left");
+const rightBtn = document.querySelector(".right");
 
 function displayUI(dataObj) {
   console.log(dataObj);
@@ -35,73 +37,41 @@ async function fetchChars() {
   let response = await axios(url);
   // console.log(response.data);
   displayUI(response.data);
-  setSlideshow();
+  leftBtn.addEventListener("click", slideLeft);
+  rightBtn.addEventListener("click", slideRight);
 }
 
 fetchChars();
 
-// <p>Personality: ${villager.personality}</p>
-// <p>Species: ${villager.height}</p>
-// <p>Catchphrase: ${villager.mass}</p>
+let currentSlide = 0;
 
-// console.log(dataObj);
-// for (const fish in dataObj) {
-//   console.log(fish);
-//   console.log(dataObj[fish]["catch-phrase"]);
-//   console.log(dataObj[fish]["image_uri"]);
-//   console.log(dataObj[fish]["name"]["name-USen"]);
-
-//   let htmlTemplate = `
-//   <div class="card">
-//     <h1>Name: ${dataObj[fish]["name"]["name-USen"]}</h1>
-//     <p>Catchphrase: ${dataObj[fish]["catch-phrase"]}</p>
-//     <img src="${dataObj[fish]["image_uri"]}" alt="${dataObj[fish]["name"]["name-USen"]} fish" width="400" height="250">
-
-//   </div>
-// `;
-
-//   characterContainer.insertAdjacentHTML("afterend", htmlTemplate);
-// }
-//use char container
-// setTimeout(() => {
-function setSlideshow() {
+function slideRight() {
   const galleryItems = villagerContainer.querySelectorAll(".villager-card");
   const slideCount = galleryItems.length;
-  console.log(slideCount);
   const width = galleryItems[0].clientWidth;
-  console.log(width);
-  let currentSlide = 1;
-  function transitionSlide() {
-    if (currentSlide < slideCount) {
-      console.log("Called!");
-      gallery.style.transform = `translateX(-${width * currentSlide}px)`;
-      currentSlide += 1;
-    } else {
-      gallery.style.transform = `tranlsateX(0)`;
-      currentSlide = 1;
-    }
+
+  if (currentSlide < slideCount) {
+    console.log("Slide to the right", currentSlide);
+    currentSlide += 1;
+    gallery.style.transform = `translateX(-${width * currentSlide}px)`;
+  } else {
+    gallery.style.transform = `tranlsateX(0)`;
+    currentSlide = 1;
   }
-  let setInter = setInterval(transitionSlide, 5000);
-  setInter;
 }
-// }, 3500);
 
-// const galleryItems = villagerContainer.querySelectorAll(".villager-card");
-// const slideCount = galleryItems.length;
-// console.log(slideCount);
-// const width = galleryItems[0].clientWidth;
-// console.log(width);
-// let currentSlide = 1;
-// function transitionSlide() {
-//   if (currentSlide < slideCount) {
-//     console.log("Called!");
-//     gallery.style.transform = `translateX(-${width * currentSlide}px)`;
-//     currentSlide += 1;
-//   } else {
-//     gallery.style.transform = `tranlsateX(0)`;
-//     currentSlide = 1;
-//   }
-// }
+function slideLeft() {
+  const galleryItems = villagerContainer.querySelectorAll(".villager-card");
+  const slideCount = galleryItems.length;
+  const width = galleryItems[0].clientWidth;
 
-// let setInter = setInterval(transitionSlide, 1000);
-// setInter;
+  if (currentSlide < slideCount) {
+    console.log("Slide to the left!", currentSlide);
+    currentSlide -= 1;
+    console.log("Slide to the left! (After update)", currentSlide);
+    gallery.style.transform = `translateX(-${width * currentSlide}px)`;
+  } else {
+    gallery.style.transform = `tranlsateX(0)`;
+    currentSlide = 1;
+  }
+}
