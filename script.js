@@ -16,7 +16,7 @@ function displayUI(dataObj) {
     // console.log(dataObj[villager]["name"]["name-USen"]);
 
     let htmlTemplate = `
-    <li class="villager-card">
+    <div class="villager-card">
       <h2>${dataObj[villager]["name"]["name-USen"]}</h2>
       <div class="gen-info">
         <p>Species: ${dataObj[villager]["species"]}</p>
@@ -26,7 +26,7 @@ function displayUI(dataObj) {
 
       <img src="${dataObj[villager]["image_uri"]}" alt="${dataObj[villager]["name"]["name-USen"]} fish" width="250" height="250">
 
-    </li>
+    </div>
   `;
 
     gallery.insertAdjacentHTML("afterbegin", htmlTemplate);
