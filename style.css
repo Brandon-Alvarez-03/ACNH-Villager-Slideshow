@@ -1,3 +1,7 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .card {
   border: 2px solid black;
   border-radius: 20px;
@@ -6,4 +10,12 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background-color: peachpuff;
+}
+
+.gen-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
