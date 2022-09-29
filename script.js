@@ -4,18 +4,24 @@ const url = "https://acnhapi.com/v1/fish/";
 
 const characterContainer = document.querySelector(".char-container");
 
-function displayUI(fishData) {
-  console.log(fishData);
-  for (fish in fishData) {
-    console.log(fish.price);
+function displayUI(dataObj) {
+  console.log(dataObj);
+  for (const fish in dataObj) {
+    console.log(fish);
+    console.log(dataObj[fish]["catch-phrase"]);
+    console.log(dataObj[fish]["image_uri"]);
+    console.log(dataObj[fish]["name"]["name-USen"]);
+
     let htmlTemplate = `
     <div class="card">
-      <h1>Price: ${fish["price"]}</h1>
-      <img src="${fish.img_uri}" alt="fish" width="250" height="250">
+      <h1>Name: ${dataObj[fish]["name"]["name-USen"]}</h1>
+      <p>Catchphrase: ${dataObj[fish]["catch-phrase"]}</p>
+      <img src="${dataObj[fish]["image_uri"]}" alt="${dataObj[fish]["name"]["name-USen"]} fish" width="400" height="250">
+
     </div>
   `;
 
-    characterContainer.insertAdjacentHTML("beforeend", htmlTemplate);
+    characterContainer.insertAdjacentHTML("afterend", htmlTemplate);
   }
 }
 
