@@ -52,7 +52,7 @@ function slideRight() {
   const width = galleryItems[0].clientWidth;
   console.log(currentSlide);
 
-  if (currentSlide < slideCount) {
+  if (currentSlide < slideCount - 1) {
     console.log("Right Slide");
     currentSlide += 1;
     gallery.style.transform = `translateX(-${width * currentSlide}px)`;
@@ -98,11 +98,10 @@ function compareValue() {
       if (response == villager.firstElementChild.innerText) {
         // console.log(response);
         // console.log(villager);
-        // currentSlide = index;
-        console.log(currentSlide + " before Transform");
-        gallery.style.transform = `translateX(${1000 * index}px)`;
-        console.log(index);
         currentSlide = index;
+        console.log(currentSlide + " before Transform");
+        gallery.style.transform = `translateX(-${1000 * index}px)`;
+        console.log(index);
         //filter thru villagers , if villager == response then grab the index (indexOf) of that specific villager
         console.log(gallery.style.transform);
         console.log(currentSlide + " After Transform");
@@ -113,15 +112,3 @@ function compareValue() {
     });
   });
 }
-// form.addEventListener("input", function (e) {
-//   e.preventDefault();
-//   let response = form.elements.search.value;
-//   charactersList.forEach((characterDiv) => {
-//     if (characterDiv.dataset.name.includes(response)) {
-//       characterDiv.classList.remove("hide");
-//     } else {
-//       characterDiv.classList.add("hide");
-//     }
-//   });
-//   console.log(charactersList[0].classList);
-// });
