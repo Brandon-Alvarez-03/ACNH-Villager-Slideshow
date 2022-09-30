@@ -14,7 +14,7 @@ function displayUI(dataObj) {
     // console.log(villager);
     // console.log(dataObj[villager]["catch-phrase"]);
     // console.log(dataObj[villager]["image_uri"]);
-    // console.log(dataObj[villager]["name"]["name-USen"]);
+    console.log(dataObj[villager]["name"]["name-USen"]);
 
     let htmlTemplate = `
     <div class="villager-card">
@@ -25,7 +25,7 @@ function displayUI(dataObj) {
         <p>Catchphrase: "${dataObj[villager]["catch-phrase"]}"</p>
       </div>
 
-      <img src="${dataObj[villager]["image_uri"]}" alt="${dataObj[villager]["name"]["name-USen"]} fish" width="250" height="250">
+      <img src="${dataObj[villager]["image_uri"]}" alt="${dataObj[villager]["name"]["name-USen"]}" width="250" height="250">
 
     </div>
   `;
@@ -38,14 +38,14 @@ async function fetchChars() {
   let response = await axios(url);
   // console.log(response.data);
   displayUI(response.data);
-  compareValue();
   leftBtn.addEventListener("click", slideLeft);
   rightBtn.addEventListener("click", slideRight);
+  compareValue();
 }
-
 fetchChars();
 
 let currentSlide = 0;
+
 function slideRight() {
   const galleryItems = villagerContainer.querySelectorAll(".villager-card");
   const slideCount = galleryItems.length;
@@ -70,7 +70,7 @@ function slideLeft() {
   const slideCount = galleryItems.length;
   const width = galleryItems[0].clientWidth;
   console.log(currentSlide);
-  if (currentSlide < slideCount) {
+  if (currentSlide < slideCount && currentSlide >= 0) {
     console.log("Left Slide");
     currentSlide--;
     gallery.style.transform = `translateX(-${width * currentSlide}px)`;
@@ -99,12 +99,13 @@ function compareValue() {
         // console.log(response);
         // console.log(villager);
         // currentSlide = index;
-        console.log(currentSlide);
-        gallery.style.transform = `translateX(${1000 * (195 - index)}px)`;
-        currentSlide = index - 195;
+        console.log(currentSlide + " before Transform");
+        gallery.style.transform = `translateX(${1000 * index}px)`;
+        console.log(index);
+        currentSlide = index;
         //filter thru villagers , if villager == response then grab the index (indexOf) of that specific villager
         console.log(gallery.style.transform);
-        console.log(currentSlide + "After Transform");
+        console.log(currentSlide + " After Transform");
         console.log(index);
         e.target.elements.search.value = "";
         //replace current card with specific villager (trach by name or other)

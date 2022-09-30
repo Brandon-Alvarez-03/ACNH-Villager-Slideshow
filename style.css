@@ -43,10 +43,10 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  transition: all 800ms ease;
-  justify-content: center;
-  align-items: center;
-  align-content: space-around;
+  transition: all 500ms ease;
+  /* justify-content: center; */
+  /* align-items: center;
+  align-content: space-around; */
   margin: auto;
   max-width: 1000px;
 }
