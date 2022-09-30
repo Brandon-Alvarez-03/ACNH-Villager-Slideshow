@@ -60,7 +60,7 @@ function slideRight() {
   } else {
     gallery.style.transform = `tranlsateX(0)`;
     console.log("Reset");
-    currentSlide = 1;
+    currentSlide = 0;
   }
 }
 
@@ -69,14 +69,14 @@ function slideLeft() {
   const slideCount = galleryItems.length;
   const width = galleryItems[0].clientWidth;
   console.log(currentSlide);
-  if (currentSlide < slideCount) {
+  if (currentSlide < slideCount - 1 && currentSlide > 0) {
     console.log("Left Slide");
     currentSlide--;
     gallery.style.transform = `translateX(-${width * (currentSlide - 195)}px)`;
     console.log(currentSlide);
   } else {
     gallery.style.transform = `tranlsateX(0)`;
-    currentSlide = 1;
+    currentSlide = 0;
   }
 }
 function compareValue() {
