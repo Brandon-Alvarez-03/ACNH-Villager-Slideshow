@@ -14,10 +14,10 @@ body {
   max-width: 1000px;
   position: relative;
   overflow: hidden;
-  overflow-x: scroll;
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow-x: scroll;
 }
 
 .btn {
@@ -71,4 +71,12 @@ body {
 img {
   border-radius: 50%;
   padding-bottom: 30px;
+}
+
+form {
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }
