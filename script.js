@@ -9,7 +9,7 @@ const leftBtn = document.querySelector(".left");
 const rightBtn = document.querySelector(".right");
 
 function displayUI(dataObj) {
-  console.log(dataObj);
+  // console.log(dataObj);
   for (const villager in dataObj) {
     // console.log(villager);
     // console.log(dataObj[villager]["catch-phrase"]);
@@ -38,9 +38,9 @@ async function fetchChars() {
   let response = await axios(url);
   // console.log(response.data);
   displayUI(response.data);
+  compareValue();
   leftBtn.addEventListener("click", slideLeft);
   rightBtn.addEventListener("click", slideRight);
-  compareValue();
 }
 
 fetchChars();
@@ -49,18 +49,19 @@ let currentSlide = 0;
 function slideRight() {
   const galleryItems = villagerContainer.querySelectorAll(".villager-card");
   const slideCount = galleryItems.length;
-  const width = 1000;
+  const width = galleryItems[0].clientWidth;
   console.log(currentSlide);
+
   if (currentSlide < slideCount) {
     console.log("Right Slide");
     currentSlide += 1;
-    gallery.style.transform = `translateX(-${width * (currentSlide - 195)}px)`;
+    gallery.style.transform = `translateX(-${width * currentSlide}px)`;
     console.log(currentSlide);
     console.log(gallery.style.transform);
   } else {
     gallery.style.transform = `tranlsateX(0)`;
     console.log("Reset");
-    currentSlide = 1;
+    currentSlide = 0;
   }
 }
 
@@ -72,11 +73,11 @@ function slideLeft() {
   if (currentSlide < slideCount) {
     console.log("Left Slide");
     currentSlide--;
-    gallery.style.transform = `translateX(-${width * (currentSlide - 195)}px)`;
+    gallery.style.transform = `translateX(-${width * currentSlide}px)`;
     console.log(currentSlide);
   } else {
     gallery.style.transform = `tranlsateX(0)`;
-    currentSlide = 1;
+    currentSlide = 0;
   }
 }
 function compareValue() {
@@ -100,7 +101,7 @@ function compareValue() {
         // currentSlide = index;
         console.log(currentSlide);
         gallery.style.transform = `translateX(${1000 * (195 - index)}px)`;
-        currentSlide = index;
+        currentSlide = index - 195;
         //filter thru villagers , if villager == response then grab the index (indexOf) of that specific villager
         console.log(gallery.style.transform);
         console.log(currentSlide + "After Transform");
