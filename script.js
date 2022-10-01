@@ -38,6 +38,7 @@ async function fetchChars() {
   let response = await axios(url);
   // console.log(response.data);
   displayUI(response.data);
+  blockSwipe();
   leftBtn.addEventListener("click", slideLeft);
   rightBtn.addEventListener("click", slideRight);
   compareValue();
@@ -110,5 +111,17 @@ function compareValue() {
         //replace current card with specific villager (trach by name or other)
       }
     });
+  });
+}
+
+function blockSwipe() {
+  const element = document.querySelector(".gallery");
+
+  element.addEventListener("touchstart", (e) => {
+    // is not near edge of view, exit
+    if (e.pageX > 10 && e.pageX < window.innerWidth - 10) return;
+
+    // prevent swipe to navigate gesture
+    e.preventDefault();
   });
 }

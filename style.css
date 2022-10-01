@@ -17,7 +17,6 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  overflow-x: scroll;
 }
 
 .btn {
@@ -80,3 +79,4 @@ form {
   width: 100%;
   text-align: center;
 }
+
