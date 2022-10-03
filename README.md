@@ -2,7 +2,7 @@
 
 - Features: Buttons to click left and right; Search Form to search Villagers by name
 - All 391 Animal Crossing New horizon Villagers are stored in cards
-- Images and Brief Details can be found from the https://acnhapi.com/ API
+- Images and Brief Details can be found from the https://acnhapi.com/ Documentation
 - This is an openapi no key or auth required
 
 ## Languages and Methods Used
