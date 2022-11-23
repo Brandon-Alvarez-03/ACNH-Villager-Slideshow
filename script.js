@@ -1,4 +1,4 @@
-//API is open, no authentication reuired
+//API is open, no authentication required
 
 const url = "https://acnhapi.com/v1/villagers/";
 
